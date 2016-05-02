@@ -1,0 +1,134 @@
+﻿beginmain
+//Begining of a definition of a directed graph.
+	Directed aDirectedGraph
+	Vertex vertex1("Vertex1", 1)
+	
+	Vertex vertex2("Vertex2", 2)
+	
+	Vertex vertex3()
+	Property proVertex3 = ("Vertex3", 3)
+	vertex3.AddProperty(proVertex3)
+	
+	Vertex vertex4()
+	Property proVertex4
+	proVertex4 = ("Vertex4", 4)
+	vertex4.AddProperty(proVertex4)
+	
+	Vertex vertex5()
+	vertex5.AddProperty("Vertex5", "five")
+	
+	Vertex vertex6("Vertex6", "six")
+	
+	Vertex vertex7("Vertex7", 7)
+	
+	Vertex vertex8("Vertex8", 8)
+	
+	Vertex vertex9("Vertex9", 9)
+	
+	Edge edge1and2
+	Property proEdge1and2 = ("Edge1and2", 12)
+	edge1and2.AttachProperty(proEdge1and2)
+	edge1and2.Connect(vertex1, vertex2)
+	
+	Edge edge2and7
+	Property proEdge2and7 = ("Edge2and7", 27)
+	edge2and7.AttachProperty(proEdge2and7)
+	edge1and2.Connect(vertex2, vertex7)
+
+	Edge edge2and8
+	Property proEdge2and8 = ("Edge2and8", 28)
+	edge2and8.AttachProperty(proEdge2and8)
+	edge1and2.Connect(vertex2, vertex8)
+	
+	Edge edge8and9
+	Property proEdge8and9 = ("Edge8and9", 89)
+	edge8and9.AttachProperty(proEdge8and9)
+	edge1and2.Connect(vertex8, vertex9)
+	
+	Edge edge7and9
+	Property proEdge7and9 = ("Edge7and9", 79)
+	edge7and9.AttachProperty(proEdge7and9)
+	edge7and9.Connect(vertex7, vertex9)
+	
+	Edge edge1and3
+	Property proEdge1and3 = ("Edge1and3", 13)
+	edge1and3.AttachProperty(proEdge1and3)
+	edge1and3.Connect(vertex1, vertex3)
+	
+	Edge edge3and4
+	Property proEdge3and4 = ("Edge3and4", 34)
+	edge3and4.AttachProperty(proEdge3and4)
+	edge3and4.Connect(vertex3, vertex4)
+	
+	Edge edge4and6
+	Property proEdge4and6 = ("Edge4and6", 46)
+	edge4and6.AttachProperty(proEdge4and6)
+	edge4and6.Connect(vertex4, vertex6)
+	
+	Edge edge4and5
+	Property proEdge4and5 = ("Edge4and5", 45)
+	edge4and5.AttachProperty(proEdge4and5)
+	edge4and5.Connect(vertex4, vertex5)
+	
+	aDirectedGraph.AddVertex(vertex1)
+	aDirectedGraph.AddVertex(vertex2)
+	aDirectedGraph.AddVertex(vertex3)
+	aDirectedGraph.AddVertex(vertex4)
+	aDirectedGraph.AddVertex(vertex5)
+	aDirectedGraph.AddVertex(vertex6)
+	aDirectedGraph.AddVertex(vertex7)
+	aDirectedGraph.AddVertex(vertex8)
+	aDirectedGraph.AddVertex(vertex9)
+	
+	//End of definition of directed graph
+	//Queries for directed graph start
+	
+	Path pathA = ("vertex1", 1)->("vertex2", 2)
+	
+	Path pathB = pathA->("vertex7", 7)|("vertex8", 8)
+	
+	Path pathC = pathB->("vertex9", 9)*
+	
+	Path pathD = (name=="vertex1")->(Contains: "vertex3")->(value>1)->()
+	
+	Path pathE = pathA->(!Contains: "vertex6")->pathE
+	
+	//Queries for directed graph end
+	//Start of undirected graph definition
+	
+	Undirected ugraph
+	
+	Vertex uvertex1("Ali", 1444)
+	Vertex uvertex2("Veli", 2033)
+	Vertex uvertex3("Mehmet", 3013)
+	Vertex uvertex4("Ayşe", 9999)
+	Vertex uvertex5("Hüseyin", 2)
+	
+	Edge edge1
+	Edge edge2
+	Edge edge3
+	Edge edge4
+	Edge edge5
+	
+	edge1.ConnectTo(uvertex1, uvertex2)
+	edge2.ConnectTo(uvertex2, uvertex3)
+	edge3.ConnectTo(uvertex3, uvertex4)
+	edge4.ConnectTo(uvertex5, uvertex4)
+	edge5.ConnectTo(uvertex2, uvertex5)
+	
+	//End of definition of undirected graph
+	//Start of undirected graph queries
+	
+	Path ua = (name=="Ali")->()->(name=="Mehmet")|(name=="Hüseyin")
+	
+	Path ub = ua->(value == 9999)->(value>3)*->(name=="Ali")
+	
+	Path uc = ()*->("Ayşe", 9999)
+	
+	Path ud = ("Hüseyin", 2)->()*->ud
+	
+	Path ue = ua->(value>3)*->(name="Hüseyin")
+	
+	//Queries for undirected graph end
+
+endmain
